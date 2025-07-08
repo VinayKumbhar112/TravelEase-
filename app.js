@@ -87,7 +87,7 @@ app.use("/listings/:id/reviews", reviews);
 app.use("/",userrouter);
 
 app.get("/", (req, res) => {
-  res.send("Hi Working!");
+  res.redirect("./listings");
 });
 app.use((err, req, res, next) => {
   let { statuscode = 500, message = "something went wrong!" } = err;
