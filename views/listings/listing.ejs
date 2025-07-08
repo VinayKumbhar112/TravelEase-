@@ -1,0 +1,124 @@
+<% layout('/layouts/boilerplate') %>
+<style>
+  #filters{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  .filters{
+ text-align: center;
+ margin-right: 2rem;
+ margin-top: 1rem;
+ opacity: 0.7;
+  }
+  .filters:hover{
+cursor: pointer;
+ opacity: 1;
+  }
+  .tax-info{
+    display: none;
+  }
+ .tax-switch {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  max-width: fit-content;
+  font-family: 'Arial', sans-serif;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+
+  
+</style>
+<div id="filters">
+  <div class="filters">
+    <div><i class="bi bi-fire"></i></div>
+    <p>Trending</p>
+  </div>
+   <div class="filters">
+    <div><i class="bi bi-bank2"></i></div>
+    <p>Rooms</p>
+  </div>
+   <div class="filters">
+    <div><i class="bi bi-image-alt"></i></div>
+    <p>Iconic Cities</p>
+  </div>
+   <div class="filters">
+    <div><i class="bi bi-image-fill"></i></div>
+    <p>Mountains</p>
+  </div>
+   <div class="filters">
+    <div><i class="bi bi-shop-window"></i></div>
+    <p>Castles</p>
+  </div>
+    <div class="filters">
+    <div><i class="bi bi-tree-fill"></i></div>
+    <p>Nature Stays</p>
+  </div>
+  <div class="filters">
+    <div><i class="bi bi-water"></i></div>
+    <p>Beachfront</p>
+  </div>
+  <div class="filters">
+    <div><i class="bi bi-building"></i></div>
+    <p>City Views</p>
+  </div>
+  <div class="tax-switch">
+    <div class="form-check form-switch form-check-reverse">
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <label class="form-check-label" for="switchCheckDefault">Default switch checkbox input</label>
+</div>
+  </div>
+</div>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for(let data of sampledata){%>
+    <a href="/listings/<%=data._id%>" class="listing-link">
+  <div class="card col " >
+  <img src="<%=data.image.url%>" class="card-img-top" alt="listing-image" style="height: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title"> <%=data.title%></h5>
+    <p class="card-text">
+     <%= data.description%>
+     <p class="price">
+     &#8377;<%= 
+    data.price != null
+      ? Number(data.price).toLocaleString("en-IN")
+      : "—"   /* or "N/A", or "0", whatever fallback you prefer */
+  %>
+   <i class="tax-info">  +18% GST</i>
+     </p>
+    </p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
+</a>
+
+ <%}%>
+ </div>
+ <!-- <ul>
+  <% for(let data of sampledata){%>
+
+  <li><a href="/listings/<%= data._id %>"><%=data.title%></a></li>
+
+  <%}%>
+</ul> -->
+
+</body>
+
+<script>
+let taxswitch = document.getElementById("switchCheckDefault");
+
+taxswitch.addEventListener('click', () => {
+  let taxinfos = document.querySelectorAll(".tax-info");
+  taxinfos.forEach(info => {
+    info.style.display = (info.style.display !== "inline") ? "inline" : "none";
+  });
+});
+
+</script>

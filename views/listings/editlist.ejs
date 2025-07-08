@@ -1,0 +1,45 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+  <h1 style="text-align: center;">Edit the list</h1>
+    <div class="row">
+      <div class="col-8 offset-2">
+  <form   method="post" action="/listings/<%= listingdata._id %>?_method=PUT" class="needs-validation" enctype="multipart/form-data" novalidate >
+
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+    <input name="title" value="<%=listingdata.title%>" class="form-control" required type="text"><br><hr>
+    </div>
+   <div class="mb-3">
+    <label for="description"  class="form-label">Description:</label>
+<input name="description" value="<%=listingdata.description%>" class="form-control" type="text" required><br><hr>
+</div>
+<div class="mb-3">
+  <label for="price"  class="form-label">Price:</label>
+<input name="price" value="<%=listingdata.price%>" class="form-control" type="number" required><br><hr>
+<div class="invalid-feedback">Please enter a valid price</div>
+</div>
+<h6>Original image:</h6>
+<div class="mb-3" >
+<img src="<%=originalimageurl%>" alt="image">
+</div>
+ <div class="mb-3">
+      <label for="image" class="form-label" >Upload New Image: </label>
+      <input type="file" class="form-control" name="image">
+      <!-- <div class="invalid-feedback">Please Upload image</div> -->
+    </div>
+<div class="mb-3">
+  <label for="location"  class="form-label">Location:</label>
+<input name="location" value="<%=listingdata.location%>" class="form-control" type="text" required><br><hr>
+</div>
+<div class="mb-3">
+  <label for="country"  class="form-label"> Country:</label>
+<input name="country" value="<%=listingdata.country%>" class="form-control" type="text" required> 
+</div>
+<div class="mb-3">
+<button class="btn btn-dark">Edit</button>
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>
