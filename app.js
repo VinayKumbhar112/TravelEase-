@@ -64,6 +64,9 @@ app.use(session({
     maxAge:7*24*60*60*1000,
     httpOnly:true
   }}));
+  app.get('/', (req, res) => {
+  res.redirect('/listings');
+});
 
   app.use(passport.initialize());
 app.use(passport.session());
